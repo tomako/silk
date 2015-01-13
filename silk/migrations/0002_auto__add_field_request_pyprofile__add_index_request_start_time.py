@@ -53,13 +53,13 @@ class Migration(SchemaMigration):
             'meta_time_spent_queries': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'}),
             'method': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'num_sql_queries': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'path': ('django.db.models.fields.CharField', [], {'max_length': '300', 'db_index': 'True'}),
+            'path': ('django.db.models.fields.CharField', [], {'max_length': '255', 'db_index': 'True'}),
             'pyprofile': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'query_params': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'raw_body': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'start_time': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now', 'db_index': 'True'}),
             'time_taken': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'}),
-            'view_name': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '300', 'db_index': 'True', 'blank': 'True'})
+            'view_name': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '255', 'db_index': 'True', 'blank': 'True'})
         },
         u'silk.response': {
             'Meta': {'object_name': 'Response'},

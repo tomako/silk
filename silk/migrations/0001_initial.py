@@ -11,13 +11,13 @@ class Migration(SchemaMigration):
         # Adding model 'Request'
         db.create_table(u'silk_request', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('path', self.gf('django.db.models.fields.CharField')(max_length=300, db_index=True)),
+            ('path', self.gf('django.db.models.fields.CharField')(max_length=255, db_index=True)),
             ('query_params', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
             ('raw_body', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
             ('body', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
             ('method', self.gf('django.db.models.fields.CharField')(max_length=10)),
             ('start_time', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
-            ('view_name', self.gf('django.db.models.fields.CharField')(default='', max_length=300, db_index=True, blank=True)),
+            ('view_name', self.gf('django.db.models.fields.CharField')(default='', max_length=255, db_index=True, blank=True)),
             ('end_time', self.gf('django.db.models.fields.DateTimeField')(null=True, blank=True)),
             ('time_taken', self.gf('django.db.models.fields.FloatField')(null=True, blank=True)),
             ('encoded_headers', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
@@ -123,12 +123,12 @@ class Migration(SchemaMigration):
             'meta_time_spent_queries': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'}),
             'method': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
             'num_sql_queries': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'path': ('django.db.models.fields.CharField', [], {'max_length': '300', 'db_index': 'True'}),
+            'path': ('django.db.models.fields.CharField', [], {'max_length': '255', 'db_index': 'True'}),
             'query_params': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'raw_body': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'start_time': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'time_taken': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'}),
-            'view_name': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '300', 'db_index': 'True', 'blank': 'True'})
+            'view_name': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '255', 'db_index': 'True', 'blank': 'True'})
         },
         u'silk.response': {
             'Meta': {'object_name': 'Response'},
