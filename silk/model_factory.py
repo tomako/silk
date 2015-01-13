@@ -4,6 +4,7 @@ import sys
 import traceback
 
 from django.core.urlresolvers import resolve
+from django.db import IntegrityError
 
 from silk import models
 from silk.collector import DataCollector
@@ -248,6 +249,9 @@ class ResponseModelFactory(object):
         # anything to we pass to UTF-8. Some stuff like binary will fail.
         try:
             silky_response.raw_body = content
+            silky_response.save()
         except UnicodeDecodeError:
             Logger.debug('NYI: Saving of binary response body')  # TODO
+        except IntegrityError:
+            Logger.debug('Duplicate entry for key request_id')  # TODO
         return silky_response

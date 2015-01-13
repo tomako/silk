@@ -83,22 +83,18 @@ class SilkyMiddleware(object):
             request_model = RequestModelFactory(request).construct_request_model()
         DataCollector().configure(request_model)
 
-
-
     def _process_response(self, response):
         with silk_meta_profiler():
             collector = DataCollector()
             collector.stop_python_profiler()
             silk_request = collector.request
             if silk_request:
-                silk_response = ResponseModelFactory(response).construct_response_model()
-                silk_response.save()
+                ResponseModelFactory(response).construct_response_model()
                 silk_request.end_time = timezone.now()
                 collector.finalise()
                 silk_request.save()
             else:
                 Logger.error('No request model was available when processing response. Did something go wrong in process_request/process_view?')
-
 
     def process_response(self, request, response):
         if getattr(request, 'silk_is_intercepted', False):
