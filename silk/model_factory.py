@@ -241,6 +241,8 @@ class ResponseModelFactory(object):
                 header, val = k, v
             finally:
                 headers[header] = val
+
+        silky_response = None
         try:
             silky_response = models.Response.objects.create(request=self.request,
                                                             status_code=self.response.status_code,
