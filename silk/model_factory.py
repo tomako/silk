@@ -90,7 +90,11 @@ class RequestModelFactory(object):
             body = self.request.POST
             body = json.dumps(dict(body), sort_keys=True, indent=4)
         elif content_type in content_types_json:
-            body = json.dumps(json.loads(raw_body), sort_keys=True, indent=4)
+            try:
+                body = json.dumps(json.loads(raw_body), sort_keys=True, indent=4)
+            except ValueError:
+                # sometimes the invalid content is intentional
+                body = raw_body
         return body
 
     def body(self):
