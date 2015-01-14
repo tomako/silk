@@ -75,7 +75,10 @@ class RequestModelFactory(object):
                 del headers['COOKIE']
             except KeyError:
                 pass
-        return json.dumps(headers)
+        try:
+            return json.dumps(headers)
+        except UnicodeDecodeError:
+            return json.dumps(headers, "raw_unicode_escape")
 
     def _body(self, raw_body, content_type):
         """
