@@ -78,7 +78,7 @@ class RequestModelFactory(object):
         try:
             return json.dumps(headers)
         except UnicodeDecodeError:
-            return json.dumps(headers, "raw_unicode_escape")
+            return json.dumps(headers, encoding="raw_unicode_escape")
 
     def _body(self, raw_body, content_type):
         """
